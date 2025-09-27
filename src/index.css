@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  /* Colors */
+  --color-primary: #031434;
+  --color-secondary: #0A74DC;
+  --color-dark: #00992B;
+
+  /* Breakpoints */
+  --breakpoint-xx: 400px;
+  --breakpoint-xs: 480px;
+  --breakpoint-ss: 596px;
+  --breakpoint-sm: 768px;
+  --breakpoint-md: 1060px;
+  --breakpoint-lg: 1200px;
+  --breakpoint-xl: 1440px;
+  --breakpoint-2xl: 1512px;
+
+  /* Font Sizes */
+  --text-base: 1rem;
+  --text-sm: 1.5rem;
+  --text-md: 2.25rem;
+  --text-lg: 3.25rem;
+  --text-xl: 5rem;
+
+  /* Fonts */
+  --font-inter: "Inter", sans-serif;
+}
+
+* {
+  /* margin: 0; */
+  /* padding: 0; */
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-inter);
+}
+
+@layer utilities {
+  .maxContainer {
+    @apply mx-auto max-w-[1440px];
+  }
+
+  .flexCenter {
+    @apply flex items-center justify-center;
+  }
+
+  .flexBetween {
+    @apply flex items-center justify-between;
+  }
+
+  .flexStart {
+    @apply flex items-center justify-start;
+  }
+
+  .flexEnd {
+    @apply flex items-center justify-end;
+  }
+}
