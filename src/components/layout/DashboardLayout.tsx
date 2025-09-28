@@ -36,7 +36,7 @@ const DashboardLayout = () => {
   return (
     <Box
       sx={{ display: "flex" }}
-      className="bg-dark text-white w-full min-h-screen"
+      className="bg-transparent w-full min-h-screen"
     >
       <CssBaseline />
       <Topbar
@@ -51,7 +51,7 @@ const DashboardLayout = () => {
       />
       <Box
         component="main"
-        className="bg-dark w-full h-full"
+        className="bg-transparent w-full h-full"
         sx={{ flexGrow: 1, px: 3, py: 5, minHeight: "100%" }}
       >
         <DrawerHeader />
