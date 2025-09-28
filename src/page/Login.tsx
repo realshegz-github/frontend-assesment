@@ -28,7 +28,7 @@ const LoginPage = () => {
     return new Promise((resolve) => {
       setTimeout(() => {
         console.log("Form Data:", data);
-        navigate("/dashboard");
+        navigate("/app");
         resolve(true);
       }, 1000);
     });
@@ -130,9 +130,8 @@ const LoginPage = () => {
             />
             <Button
               type="submit"
-              fullWidth
               variant="contained"
-              disabled={isSubmitting}
+              // disabled={isSubmitting}
               sx={{
                 mt: 3,
                 mb: 2,
@@ -141,7 +140,11 @@ const LoginPage = () => {
                 bgcolor: "#0A74DC",
               }}
             >
-              {isSubmitting ? <CircularProgress size={30} /> : "Log in"}
+              {isSubmitting ? (
+                <CircularProgress size={20} sx={{ color: "#fff" }} />
+              ) : (
+                "Log in"
+              )}
             </Button>
 
             <div>

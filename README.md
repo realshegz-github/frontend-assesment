@@ -8,7 +8,6 @@ This application demonstrates (mock login), data fetching from the Star Wars API
 React 18 + Vite
 TypeScript
 Redux Toolkit
-React Hook Form + Yup
 Material UI v5
 TailwindCSS
 
@@ -25,6 +24,3 @@ TailwindCSS
    npm run dev
 
 App will be available at: http://localhost:5173
-
-4. Build for production
-   npm run build

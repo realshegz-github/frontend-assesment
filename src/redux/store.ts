@@ -1,7 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
+import dataReducer from "./slices/DataSlice";
 
 export const store = configureStore({
-  reducer: {},
+  reducer: {
+    data: dataReducer,
+  },
 });
 
 // Types for hooks

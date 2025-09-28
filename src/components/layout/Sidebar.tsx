@@ -4,7 +4,6 @@ import {
   ListItemButton,
   ListItemIcon,
   ListItemText,
-  Divider,
   IconButton,
   styled,
   type Theme,
@@ -12,38 +11,26 @@ import {
 } from "@mui/material";
 import MuiDrawer from "@mui/material/Drawer";
 import { NavLink } from "react-router-dom";
-import {
-  MdDashboard,
-  MdSupportAgent,
-  MdChat,
-  MdConfirmationNumber,
-  MdGroup,
-  MdSettings,
-  MdChevronLeft,
-} from "react-icons/md";
+import { MdDashboard, MdChevronLeft } from "react-icons/md";
+import logoImg from "../../assets/starwars.png";
+import { BiSolidCheckbox } from "react-icons/bi";
 
 const navItems = [
-  { text: "Dashboard", icon: <MdDashboard size={24} />, path: "/dashboard" },
+  { text: "Overview", icon: <MdDashboard size={24} />, path: "/app" },
   {
-    text: "Assistant",
-    icon: <MdSupportAgent size={24} />,
-    path: "/dashboard/assistant",
+    text: "Starships",
+    icon: <BiSolidCheckbox color="#A9C1FF" size={24} />,
+    path: "/app/starships",
   },
   {
-    text: "Conversations",
-    icon: <MdChat size={24} />,
-    path: "/dashboard/conversations",
+    text: "People",
+    icon: <BiSolidCheckbox color="#FFA9EC" size={24} />,
+    path: "/app/people",
   },
   {
-    text: "Ticket",
-    icon: <MdConfirmationNumber size={24} />,
-    path: "/dashboard/ticket",
-  },
-  { text: "Teams", icon: <MdGroup size={24} />, path: "/dashboard/teams" },
-  {
-    text: "Settings",
-    icon: <MdSettings size={24} />,
-    path: "/dashboard/settings",
+    text: "Species",
+    icon: <BiSolidCheckbox color="#FDFFA9" size={24} />,
+    path: "/app/species",
   },
 ];
 
@@ -105,31 +92,41 @@ const SideBar = ({ open, handleDrawerClose, drawerWidth }: SideBarProps) => {
       variant="permanent"
       open={open}
       drawerWidth={drawerWidth}
+      className="bg-primary"
       PaperProps={{
-        sx: { background: "#2370f8" },
+        sx: { backgroundColor: "primary.main" },
       }}
     >
-      <DrawerHeader>
+      <DrawerHeader
+        sx={{
+          display: "flex",
+          position: "relative",
+          justifyContent: "center",
+          py: 2,
+        }}
+      >
         <img
-          src={""}
+          src={logoImg}
           alt="Logo"
           style={{
-            height: "24px",
+            height: "46px",
             opacity: open ? 1 : 0,
             transition: "opacity 0.3s",
           }}
         />
-        <IconButton onClick={handleDrawerClose} sx={{ color: "#d1d5dc" }}>
-          <MdChevronLeft />
-        </IconButton>
+        <div className="absolute right-2 top-2">
+          <IconButton onClick={handleDrawerClose} sx={{ color: "#d1d5dc" }}>
+            <MdChevronLeft />
+          </IconButton>
+        </div>
       </DrawerHeader>
-      <Divider sx={{ borderColor: "rgba(255, 255, 255, 0.1)" }} />
+      {/* <Divider sx={{ borderColor: "rgba(255, 255, 255, 0.1)" }} /> */}
       <List sx={{ p: 1 }}>
         {navItems.map((item) => (
           <ListItem
             key={item.text}
             disablePadding
-            sx={{ display: "block", my: 1 }}
+            sx={{ display: "block", my: 2 }}
           >
             <NavLink
               to={item.path}

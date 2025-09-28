@@ -11,6 +11,7 @@ import { MdMenu, MdNotifications } from "react-icons/md";
 import { Avatar, Badge, Box, Menu, MenuItem } from "@mui/material";
 import { getInitials } from "../../utils/hooks/helpers";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
+import { useNavigate } from "react-router-dom";
 
 interface AppBarProps extends MuiAppBarProps {
   open?: boolean;
@@ -44,7 +45,7 @@ interface TopbarProps {
 const Topbar = ({ open, handleDrawerOpen, drawerWidth }: TopbarProps) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const isMenuOpen = Boolean(anchorEl);
-
+  const navigate = useNavigate();
   const handleProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
@@ -61,11 +62,11 @@ const Topbar = ({ open, handleDrawerOpen, drawerWidth }: TopbarProps) => {
       open={isMenuOpen}
       onClose={handleMenuClose}
       PaperProps={{
-        sx: { mt: 1.5, backgroundColor: "#1F2937", color: "white" },
+        sx: { mt: 1.5, backgroundColor: "#0A74DC", color: "white" },
       }}
     >
       <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem>Logout</MenuItem>
+      <MenuItem onClick={() => navigate("/")}>Logout</MenuItem>
     </Menu>
   );
 
@@ -77,18 +78,21 @@ const Topbar = ({ open, handleDrawerOpen, drawerWidth }: TopbarProps) => {
       drawerWidth={drawerWidth}
       elevation={0}
       sx={{
-        backgroundColor: "#111827",
-        color: "#fff",
-        borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
+        backgroundColor: "#fff",
+        color: "#000",
+        // borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
       }}
+      className="shadow shadow-gray-300"
     >
-      <Toolbar>
+      <Toolbar className=" shadow shadow-gray-300">
         <IconButton
           aria-label="open drawer"
           onClick={handleDrawerOpen}
           edge="start"
           sx={{
-            color: "#fff",
+            bgcolor: "#fff",
+            color: "#000",
+
             marginRight: 5,
             ...(open && { display: "none" }),
           }}
@@ -132,7 +136,7 @@ const Topbar = ({ open, handleDrawerOpen, drawerWidth }: TopbarProps) => {
                 {user}
               </Typography>
             </Box>
-            <MoreHorizIcon />
+            <MoreHorizIcon sx={{ color: "#C4C4C4" }} />
           </Box>
         </Box>
       </Toolbar>
