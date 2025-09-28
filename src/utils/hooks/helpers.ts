@@ -5,3 +5,8 @@ export const getInitials = (name: string) => {
   }
   return name.substring(0, 2).toUpperCase();
 };
+
+export const extractIdFromUrl = (url: string) => {
+  const match = url.match(/\/(\d+)\/$/);
+  return match ? match[1] : url;
+};

@@ -10,7 +10,8 @@ export interface People {
   name: string;
   height: string;
   created: string;
-  hair_color: string;
+  hair_color?: string;
+  skin_color?: string;
   birth_year: string;
   gender: string;
   url: string;
@@ -22,6 +23,7 @@ export interface Starship {
   starship_class: string;
   passengers: string;
   length: string;
+  pilots?: string;
   url: string;
 }
 
@@ -41,5 +43,8 @@ export interface Species {
   eye_colors: string;
   hair_colors: string;
   average_height: string;
+  designation?: string;
+  language?: string;
+  average_lifespan?: string;
   url: string;
 }

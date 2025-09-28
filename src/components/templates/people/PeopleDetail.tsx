@@ -3,21 +3,21 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 import { IoIosArrowBack } from "react-icons/io";
 import { CircularProgress, Box, Typography } from "@mui/material";
-import { fetchStarshipById } from "../../../api/xhrHelpers";
+import { fetchPersonById } from "../../../api/xhrHelpers";
 import { clearSelected } from "../../../redux/slices/DataSlice";
 import type { AppDispatch, RootState } from "../../../redux/store";
 
-const StarshipDetail = () => {
+const PeopleDetail = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
 
-  const { selectedStarship, loading, error } = useSelector(
+  const { selectedPerson, loading, error } = useSelector(
     (state: RootState) => state.data
   );
 
   useEffect(() => {
-    if (id) dispatch(fetchStarshipById(id));
+    if (id) dispatch(fetchPersonById(id));
     return () => {
       dispatch(clearSelected());
     };
@@ -25,7 +25,7 @@ const StarshipDetail = () => {
 
   if (loading) return <CircularProgress />;
   if (error) return <Typography color="error">{error}</Typography>;
-  if (!selectedStarship) return null;
+  if (!selectedPerson) return null;
 
   return (
     <Box>
@@ -37,13 +37,13 @@ const StarshipDetail = () => {
         <Typography variant="body2">Back</Typography>
       </div>
       <Typography variant="h3" fontWeight="bold" mt={2}>
-        {selectedStarship.name}
+        {selectedPerson.name}
       </Typography>
-      <Typography>Model: {selectedStarship.model}</Typography>
-      <Typography>Passengers: {selectedStarship.passengers}</Typography>
-      <Typography>Pilots: {selectedStarship.pilots}</Typography>
+      <Typography>Gender: {selectedPerson.gender}</Typography>
+      <Typography>Skin Color: {selectedPerson.skin_color}</Typography>
+      <Typography>Height: {selectedPerson.height}</Typography>
     </Box>
   );
 };
 
-export default StarshipDetail;
+export default PeopleDetail;

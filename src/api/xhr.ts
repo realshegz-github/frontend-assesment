@@ -1,4 +1,3 @@
-// xhr.ts
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type {
   People,
@@ -9,7 +8,6 @@ import type {
 } from "../types/common.types";
 import api from "./axios";
 
-// ✅ LIST FETCHERS
 export const getPeople = async (): Promise<People[]> => {
   const response = await api.get<any, ApiResponse<People>>("people/");
   return response.results;
@@ -30,7 +28,6 @@ export const getSpecies = async (): Promise<Species[]> => {
   return response.results;
 };
 
-// ✅ DETAIL FETCHERS (by ID)
 export const getPersonById = async (id: string): Promise<People> => {
   return api.get<any, People>(`people/${id}/`);
 };

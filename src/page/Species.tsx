@@ -2,27 +2,27 @@ import { useEffect } from "react";
 import { CircularProgress, Typography } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import type { RootState, AppDispatch } from "../redux/store";
-import { fetchStarships } from "../api/xhrHelpers";
-import type { Starship } from "../types/common.types";
+import { fetchSpecies } from "../api/xhrHelpers";
+import type { Species } from "../types/common.types";
 import DataTable from "../components/DataTable";
 import { extractIdFromUrl } from "../utils/hooks/helpers";
 
 const columns = [
   { id: "name", label: "Name" },
-  { id: "model", label: "Model" },
-  { id: "starship_class", label: "Class" },
-  { id: "passengers", label: "Passengers" },
-  { id: "length", label: "Length" },
+  { id: "classification", label: "Classification" },
+  { id: "eye_colors", label: "Eye Colors" },
+  { id: "hair_color", label: "Hair Color" },
+  { id: "average_height", label: "Height" },
 ];
 
-const StarshipsPage = () => {
+const SpeciesPage = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const { starships, loading, error } = useSelector(
+  const { species, loading, error } = useSelector(
     (state: RootState) => state.data
   );
 
   useEffect(() => {
-    dispatch(fetchStarships());
+    dispatch(fetchSpecies());
   }, [dispatch]);
 
   if (loading) {
@@ -36,28 +36,27 @@ const StarshipsPage = () => {
   if (error) {
     return (
       <Typography color="error" align="center">
-        Failed to load starships: {error}
+        Failed to load Species: {error}
       </Typography>
     );
   }
 
-  // map starships so rowKey is clean numeric ID
-  const rows = starships.map((ship) => ({
-    ...ship,
-    id: extractIdFromUrl(ship.url),
+  const rows = species.map((species) => ({
+    ...species,
+    id: extractIdFromUrl(species.url),
   }));
 
   return (
-    <DataTable<Starship & { id: string }>
+    <DataTable<Species & { id: string }>
       columns={columns}
       rows={rows}
       rowKey="id"
-      detailPath="/app/starships"
+      detailPath="/app/species"
       onSelectionChange={(selected) => {
-        console.log("Selected starships:", selected);
+        console.log("Selected species:", selected);
       }}
     />
   );
 };
 
-export default StarshipsPage;
+export default SpeciesPage;

@@ -30,7 +30,7 @@ const navItems = [
   {
     text: "Species",
     icon: <BiSolidCheckbox color="#FDFFA9" size={24} />,
-    path: "/app/spieces",
+    path: "/app/species",
   },
 ];
 

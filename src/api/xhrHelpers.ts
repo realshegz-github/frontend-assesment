@@ -10,7 +10,6 @@ import {
   getSpeciesById,
 } from "./xhr";
 
-// LIST FETCHERS
 export const fetchPeople = createAsyncThunk(
   "data/fetchPeople",
   async (_, { rejectWithValue }) => {
@@ -55,7 +54,6 @@ export const fetchSpecies = createAsyncThunk(
   }
 );
 
-// DETAIL FETCHERS
 export const fetchPersonById = createAsyncThunk(
   "data/fetchPersonById",
   async (id: string, { rejectWithValue }) => {

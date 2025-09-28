@@ -11,6 +11,7 @@ import { MdMenu, MdNotifications } from "react-icons/md";
 import { Avatar, Badge, Box, Menu, MenuItem } from "@mui/material";
 import { getInitials } from "../../utils/hooks/helpers";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
+import { useNavigate } from "react-router-dom";
 
 interface AppBarProps extends MuiAppBarProps {
   open?: boolean;
@@ -44,7 +45,7 @@ interface TopbarProps {
 const Topbar = ({ open, handleDrawerOpen, drawerWidth }: TopbarProps) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const isMenuOpen = Boolean(anchorEl);
-
+  const navigate = useNavigate();
   const handleProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
@@ -61,11 +62,11 @@ const Topbar = ({ open, handleDrawerOpen, drawerWidth }: TopbarProps) => {
       open={isMenuOpen}
       onClose={handleMenuClose}
       PaperProps={{
-        sx: { mt: 1.5, backgroundColor: "transpareft", color: "white" },
+        sx: { mt: 1.5, backgroundColor: "#0A74DC", color: "white" },
       }}
     >
       <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem>Logout</MenuItem>
+      <MenuItem onClick={() => navigate("/")}>Logout</MenuItem>
     </Menu>
   );
 
@@ -135,7 +136,7 @@ const Topbar = ({ open, handleDrawerOpen, drawerWidth }: TopbarProps) => {
                 {user}
               </Typography>
             </Box>
-            <MoreHorizIcon />
+            <MoreHorizIcon sx={{ color: "#C4C4C4" }} />
           </Box>
         </Box>
       </Toolbar>

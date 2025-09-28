@@ -107,7 +107,7 @@ function DataTable<T extends Record<string, any>>({
                 sx={{
                   color: "#A4A7B7",
                   fontWeight: 500,
-                  // borderBottom: "1px solid #A4A7B7",
+                  whiteSpace: "nowrap",
                 }}
               >
                 {col.label}
@@ -153,6 +153,7 @@ function DataTable<T extends Record<string, any>>({
                     sx={{
                       borderTop: "1px solid #E5E5E5",
                       borderBottom: "1px solid #E5E5E5",
+                      maxWidth: "259px",
                     }}
                   >
                     {row[col.id]}
