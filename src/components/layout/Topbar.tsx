@@ -7,11 +7,12 @@ import MuiAppBar, {
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
-import { MdMenu, MdNotifications } from "react-icons/md";
+import { MdMenu } from "react-icons/md";
 import { Avatar, Badge, Box, Menu, MenuItem } from "@mui/material";
-import { getInitials } from "../../utils/hooks/helpers";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import { useNavigate } from "react-router-dom";
+import avartar from "../../assets/passport.jpg";
+import { IoMdNotificationsOutline } from "react-icons/io";
 
 interface AppBarProps extends MuiAppBarProps {
   open?: boolean;
@@ -70,7 +71,11 @@ const Topbar = ({ open, handleDrawerOpen, drawerWidth }: TopbarProps) => {
     </Menu>
   );
 
-  const user = "John Doe";
+  const user = {
+    name: "John Doe",
+    avatarUrl: avartar,
+  };
+
   return (
     <AppBar
       position="fixed"
@@ -104,8 +109,8 @@ const Topbar = ({ open, handleDrawerOpen, drawerWidth }: TopbarProps) => {
 
         <Box sx={{ display: "flex", alignItems: "center", gap: 4 }}>
           <IconButton color="inherit">
-            <Badge badgeContent={4} color="error">
-              <MdNotifications size={24} />
+            <Badge variant="dot" color="error">
+              <IoMdNotificationsOutline size={24} />
             </Badge>
           </IconButton>
 
@@ -120,11 +125,10 @@ const Topbar = ({ open, handleDrawerOpen, drawerWidth }: TopbarProps) => {
             }}
           >
             <Avatar
-              sx={{ bgcolor: "#005BFD", width: 40, height: 40 }}
-              src={user}
-            >
-              {user && getInitials(user)}
-            </Avatar>
+              sx={{ width: 40, height: 40 }}
+              alt={user.name}
+              src={user.avatarUrl}
+            />
             <Box
               sx={{
                 display: { xs: "none", md: "flex" },
@@ -133,7 +137,7 @@ const Topbar = ({ open, handleDrawerOpen, drawerWidth }: TopbarProps) => {
               }}
             >
               <Typography variant="body1" sx={{ lineHeight: 1.2 }}>
-                {user}
+                {user.name}
               </Typography>
             </Box>
             <MoreHorizIcon sx={{ color: "#C4C4C4" }} />
