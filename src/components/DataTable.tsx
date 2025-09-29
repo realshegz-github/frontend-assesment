@@ -65,10 +65,11 @@ function DataTable<T extends Record<string, any>>({
       component={Paper}
       sx={{
         borderRadius: "4px",
-        overflow: "hidden",
+        overflowX: { xs: "auto", sm: "hidden" },
+        width: "100%",
       }}
     >
-      <Table>
+      <Table sx={{ minWidth: 596 }}>
         <TableHead sx={{ bgcolor: "#a4a7b715" }}>
           <TableRow>
             <TableCell padding="checkbox">
@@ -149,11 +150,13 @@ function DataTable<T extends Record<string, any>>({
                 {columns.map((col) => (
                   <TableCell
                     key={col.id}
-                    // sx={{ borderBottom: "1px solid #A4A7B7" }}
                     sx={{
                       borderTop: "1px solid #E5E5E5",
                       borderBottom: "1px solid #E5E5E5",
                       maxWidth: "259px",
+                      whiteSpace: "nowrap",
+                      textOverflow: "ellipsis",
+                      overflow: "hidden",
                     }}
                   >
                     {row[col.id]}

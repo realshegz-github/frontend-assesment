@@ -78,7 +78,7 @@ const LoginPage = () => {
             py: 5,
             px: 6,
           }}
-          className="border border-[#A4A7B7] rounded-lg"
+          className="sm:border sm:border-[#A4A7B7] sm:rounded-lg"
         >
           <div className="mb-4">
             <Typography variant="h4" gutterBottom>
@@ -160,7 +160,6 @@ const LoginPage = () => {
                 Forgot your password?
               </Typography>
 
-              {/* Privacy and Terms */}
               <Typography
                 variant="caption"
                 sx={{
